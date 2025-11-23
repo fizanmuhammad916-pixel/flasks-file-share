@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Share</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dark-background">
+    <header>
+        <h1>⚡️ Real-time File Room ⚡️</h1>
+    </header>
+
+    <main class="container">
+        
+        <div class="card neon-border" id="create-room-card">
+            <h2>Create New Room</h2>
+            <p>Generate a unique code to invite others.</p>
+            <button id="create-btn">CREATE ROOM</button>
+            <p id="created-code" class="neon-text code-display"></p>
+        </div>
+
+        <div class="card neon-border" id="join-room-card">
+            <h2>Join Existing Room</h2>
+            <p>Enter the code from your partner.</p>
+            <input type="text" id="room-code-input" placeholder="Enter 6-Digit Code" maxlength="6">
+            <button id="join-btn">JOIN ROOM</button>
+        </div>
+        
+        <div class="card neon-border hidden" id="room-interface">
+            <h2 class="neon-text">Room <span id="current-room-code"></span></h2>
+            <p id="user-count">Users online: 1</p>
+            
+            <hr>
+            
+            <div class="file-upload-area">
+                <h3>Upload File</h3>
+                <input type="file" id="file-input">
+                <button id="upload-btn">UPLOAD</button>
+                <p id="upload-status" style="font-size: 0.8em; color: #FF00FF;"></p>
+            </div>
+            
+            <hr>
+            
+            <div class="file-list-area">
+                <h3>Available Files</h3>
+                <ul id="shared-files-list">
+                    </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
